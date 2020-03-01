@@ -1,0 +1,110 @@
+Notes before my answers to the questions: I've taken the test fully without internet although during this week I had to research somte topics for People Allocations 
+(it was after reading the questions and before taking my time to do the test, so it was kind of cheating). Anyways, I'll just mention in the question response where
+this occured.
+
+
+0. What are the 4 OOP principle?
+    A: Inheritance, abstraction, encapsulation, composition. I'm not sure if I have to explain them but if I have to just tell me.
+
+1. What is a class? What are objects?
+    I've never actually thought about looking this up even though I use objects and classes all the time.
+    
+    A: I think classes are templates for creating objects, holding information about methods and properties . And I know that know that not all classes can be used for 
+    creating objects (abstract and static classes). Objects are an instance of a class.
+
+2. What is a contructor?
+    A: A special kind of method called when creating a new instance of a class. On the same note, static constructors are called only once before the first initialization
+    of an object / referencing a static member of the class (static constructor is called before the instance constructor). Also constructors don't have a return type, but
+    can have any acces modifier and a class can have any number of constrcutors (overloaded versions);
+
+3. What is constructor chaining?
+    Hopefully I'm understanding the question correctly (I've never heard of chaining before, so it's all assumptions).
+
+    A: It's the mechanism associated with calling another constructor (from the superclass or an overload) before the execution of the initial constructor.
+        ex: public Constructor(some_params) : this/base(other_params) {} 
+                -> the constructor calles with other_params executes first  
+                -> "this" keyword implies a constructor from within the class
+                -> "base" keyword implies a constructor from the superclass (current class inherits this one)
+
+4. Enumerate the most common access modifies in C# and explain their usage.
+    A: private -> member is only accessible (can be called, assigned or read) from within the class
+       protected -> member is only accessible from withing the class and classes that inherit it
+       internal -> I'm not sure but I think the member is only accessible inside the assembly (the executable or the library)
+       public -> member is accessible everywhere
+
+5. What is the difference between readonly and const?
+    A: const -> defines a static field that can't be reassigned
+       readonly -> defines an instance field that can only be assigned in a constructor or as part of field variable initialization
+       static readonly -> same as readonly but can only be assigned inside a static constructor (I wasn't sure about this one and out of curiosity I fiddled with it)
+    Bonus: I know const and readonly field are evaluated at different times. I'm not sure but probably consts are evaluated at compile-time and readonlt at runtime
+
+6. Explain the static keyword. (both in the context of a class and in the context of a method)
+    A: A static class is a class that can't be used to initialize objects (no instance constructor). Its members are accessible (depending on access modifiers) from
+    a reference to the class. All members of a static class have to be static. 
+       Static methods (and also fields) are members common across all instances of a class. For example, a static value type field has the same
+    value for all the instances of the class. Static members of a non-static class can be accessed  from an object instance of the class or from a reference to the class.
+
+7. What is the keyword virtual used for?
+    A: It's used to signal that a method from a superclass is supposed to be overridden in the subclass, while also having a default implementation. Using the virtual 
+    keyword makes the method behave polymorphically (the correct implementation is inferred). The new implementation in the subclass has the "override" keyword.
+       A superclass' method can be overridden without the virtual keyword (the "new" keyword) but it won't behave polymorphically.
+
+8. Explain the difference between overriding and overloading?
+    A: Overloading refers to a method that shares the same signature (name and return type) with another one but requires different arguments. SO overload is a new imple-
+    mentation of a method with a different set of arguments.
+       Overriding refers to providing a new implementation for an already existing method, which hides the initial implementation.
+
+9.  A: ..\Polymorphism\program.cs
+
+10. What is IDisposable?
+    A: I didn't really come across IDisposable so much. I'll look into it after I finish this test.
+
+11. Explain how the async/await mechanism works.
+    Note: I looked into async/await a bit more while having a task on the project (some requests sent out by our API which took advantage of async while waiting
+    for the response). On the same note, if you know any good articles discussing how to safelly use entity framework with multiple threads I would love to se them.
+    Also, I'm not saying that I'm an expert in async/await, I don't find it the easiest concept.
+
+    A: The async/await mechanism is used togheter with tasks aiming not to block the caller thread. A more thorough explanation can be found in the console app example, 
+    I find it much easier to explain the mechanism on an example. (..\Async_Await\program.cs).
+
+12.a) What are exceptions? 
+        A: I don't actually know what exceptions are. Exceptions can be thrown to stop the execution of a program immediatly. And custom exceptions can be made by
+        inheriting from the base class Exception.
+   b) What are the main blocks for handling exceptions
+        try {//code that might throw an exception here} -> always executed
+        catch(Exception e) {} -> executed when an exception in try is thrown
+        finally {} -> alway executed regardless if an exception is thrown or not
+   c) ..\ExceptionHandling\program.cs
+
+13. Explain the difference between a string and a StringBuilder.
+    A: Strings are immutable while StringBuilders are mutable. Both represent sequences of characters but strings can't be modified.
+
+14. Explain the difference between an abstract class and interfaces.
+    A: An abstract class is a class that contains one or more abstract methods (without implementation) that can be provided with an implementation in classed that
+    inherit the initial class. A class can't be instantiated if it has at least one abstract method.
+
+       Interfaces are a special kind of abstract classes. Interfaces are composed only of methods without implementation (without the need to be declared as abstract). 
+    Also, interface methods don't have access modifers (they are public) and unlike abstarct classes, a subclass can inherit any number of interfaces.
+
+15. Are we allowed to use acces modifier when declaring an interface?
+    A: No, all methods implemented inside a class from an interface have to be public.
+
+16. What are interfaces allowed to expose?
+    
+
+17. Explain the keyword "this". Can "this" be used in a static method?
+    A: The keyword "this" inside methods as a reference to the instance of the object used to call the method. It can't be used in static methods as static methods can be
+    called without an instance of the class.
+
+18. What is a property?
+    A: A c# specific way of defining a field with getter and/or setter. 
+
+19. What is an indexer?
+    A: 
+
+20. What are partial classes? 
+    A: Partial classes are classes that can have members defined elsewhere inside the namespace (I'm not sure if only withing the namespace though) besides the first
+    definition.
+
+21. Explain generics in C#. Write a simple example of a sample class using generics.
+    A: Generics are used to define classes/members of a class without an exact type
