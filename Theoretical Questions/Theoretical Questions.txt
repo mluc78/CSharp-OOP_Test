@@ -1,10 +1,5 @@
-Notes before my answers to the questions: I've taken the test fully without internet although during this week I had to research somte topics for People Allocations 
-(it was after reading the questions and before taking my time to do the test, so it was kind of cheating). Anyways, I'll just mention in the question response where
-this occured.
-
-
 0. What are the 4 OOP principle?
-    A: Inheritance, abstraction, encapsulation, composition. I'm not sure if I have to explain them but if I have to just tell me.
+    A: Inheritance, abstraction, encapsulation, composition.
 
 1. What is a class? What are objects?
     I've never actually thought about looking this up even though I use objects and classes all the time.
@@ -54,7 +49,7 @@ this occured.
     mentation of a method with a different set of arguments.
        Overriding refers to providing a new implementation for an already existing method, which hides the initial implementation.
 
-9.  A: ..\Polymorphism\program.cs
+9.  A: ..\CodeSnippets\Polymorphism\program.cs
 
 10. What is IDisposable?
     A: I didn't really come across IDisposable so much. I'll look into it after I finish this test.
@@ -65,7 +60,7 @@ this occured.
     Also, I'm not saying that I'm an expert in async/await, I don't find it the easiest concept.
 
     A: The async/await mechanism is used togheter with tasks aiming not to block the caller thread. A more thorough explanation can be found in the console app example, 
-    I find it much easier to explain the mechanism on an example. (..\Async_Await\program.cs).
+    I find it much easier to explain the mechanism on an example. (..\CodeSnippets\Async_Await\program.cs).
 
 12.a) What are exceptions? 
         A: I don't actually know what exceptions are. Exceptions can be thrown to stop the execution of a program immediatly. And custom exceptions can be made by
@@ -74,7 +69,7 @@ this occured.
         try {//code that might throw an exception here} -> always executed
         catch(Exception e) {} -> executed when an exception in try is thrown
         finally {} -> alway executed regardless if an exception is thrown or not
-   c) ..\ExceptionHandling\program.cs
+   c) ..\CodeSnippets\ExceptionHandling\program.cs
 
 13. Explain the difference between a string and a StringBuilder.
     A: Strings are immutable while StringBuilders are mutable. Both represent sequences of characters but strings can't be modified.
@@ -89,7 +84,7 @@ this occured.
 15. Are we allowed to use acces modifier when declaring an interface?
     A: No, all methods implemented inside a class from an interface have to be public.
 
-16. What are interfaces allowed to expose?
+16! What are interfaces allowed to expose?
     
 
 17. Explain the keyword "this". Can "this" be used in a static method?
@@ -100,11 +95,62 @@ this occured.
     A: A c# specific way of defining a field with getter and/or setter. 
 
 19. What is an indexer?
-    A: 
+    A: I'm not sure if this is the expected answer but in C# classes can be indexed similarly to arrays or lists
+		Syntax: public T this[int index] { get; set; } -> defined as a property (get and set can be implemented normally)
 
 20. What are partial classes? 
     A: Partial classes are classes that can have members defined elsewhere inside the namespace (I'm not sure if only withing the namespace though) besides the first
     definition.
 
 21. Explain generics in C#. Write a simple example of a sample class using generics.
-    A: Generics are used to define classes/members of a class without an exact type
+    A: Generics are used to define classes/members of a class without an exact type making them more reusable in a general case. Sample class: ..\CodeSnippets\Generics\program.cs
+
+22. What is serialization? Enumerate some formats used for serialization.
+    A: It's the operation used to convert variables stored in memory in another format that can be used to transport data. I've only come across json and xml as serialization
+    formats a bit more in depth and I've heard of a binary format (not sure if this is what it's called) while searching ways of making deep copies.
+
+23. What is a sealed class?
+    A: It's a class that can't be inherited from. Moreover an overridden method can be sealed meaning that it's
+
+24. How can you have a variable number of parameters in a function? Write an example.
+    A: Using the params keyword and it has to be the last parameter of the function. Example: ..\Params\program.cs
+
+25. Explain the difference between value types and reference types.
+    A: Reference types don't hold the value of the variable, they hold a reference to that value in memory (strings, objects, arrays or lists...). As such changing the value of the
+    reference to something else (null for example) doesn't affect the value in memory but changes the reference. Value types hold the actual value from memory (ints, enums, structs...)
+
+26. What is an enum?
+    A: I'm not actually sure but I've used them before. Enums are a value type that I've used as a group of named constants.
+
+27. What is the difference between out and ref keywords?
+    A: Both keyword are used when declaring function parameters.
+	a) Ref keyword -> normally function arguments are passed as a copy (either to a value or a reference). By using the ref keyword, a reference to the variable is passed as an argument to
+	the function
+	b) Out keyword -> argumetns marked with out are an alternative to return. Values of the out parameters have to set inside the method and then can be used by the caller function.
+
+28. What is an anonymous method? What is an anonymous type?
+    A: Anonymous functions -> can be used instead of delegates providing a simpler way to write inline functions
+	Syntax: (_params) => { //function logic here [if not void] return...}     -> An. functions don't have a name
+       Anonymous type are a way of encapsulating data in a single variable without the need to define the type explicitely before. I think they are readonly. And also
+    anonymous types don't have names.
+	Syntax: new {prop1 = ....; prop2 = ...., ... }
+
+29. What is a delegate? What are lambda expressions?
+    A: Delegates are references to a function. And lambda expressions are a more succint way of writing anonymous functions. I don't really know if the compiler treats expressions different
+    than delegates but most of the time I use them in the same scenarios.
+
+30. What is the yield keyword used for?
+    A: "Yield return" is "syntactic sugar" for a method returning an IEnumerable. Instead of returning the actual IEnumerable<T>, the method yield returns a variable of type T. Iterating with a
+    foreach loop gives all the values yield returned by the method (in order). Not sure how to better explain. See the code snippet at: ..\CodeSnippets\Yield\Program.cs
+31. What is the enum keyword?
+    A:
+
+32. What is the difference between a struct and a class? Can we have methods in structs?
+    A: Classes are reference types while structs are value types. For example, one difference cause by structs being value types is: (assume Point is a struct that has a public field int x;)
+       ex: Point p1 = new Point();
+	   Point p2 = p1;
+	   p2.x = 5;
+	   -> the value of p1.x remains the unchanged as p2 is a copy of p1. They don't reference the same struct, they are independant. And this example is true for value types and immutable re-
+	      ference types (such as strings). If a field inside the struct is a reference to a mutable type, the structs are no longer fully independant.
+	
+			   
