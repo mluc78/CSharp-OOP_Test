@@ -8,24 +8,22 @@ namespace First_3_odd_numbers
     {
         static void Main(string[] args)
         {
-            List<int> list =  new List<int>() {1, 2, 2, 4, 5, 6, 7};
-            IEnumerable<int> result1, result2;
+            List<int> list =  new List<int>() {1, 2, 2, 4, 5, 6, 7, 9, 13};
 
-            //Solution I -> Pros: it doesn't iterate through the whole sequence, only until it finds 3 odd numbers
-            //           -> Cons: has to double check if a number is odd
-            int numberOfOdds = 3;
-            result1 = list.TakeWhile(x => 
+            int numberOfOddsFilteredOut = 3;
+            var result = list.Where(e => 
             {
-                if(numberOfOdds == 0)
+                if(numberOfOddsFilteredOut == 0)
+                    return true;
+                if(e % 2 != 0)
+                {
+                    numberOfOddsFilteredOut--;
                     return false;
-                if(x % 2 != 0)
-                    numberOfOdds--;
+                }
                 return true;
-            }).Where(x => x % 2 != 0);
+            });
 
-            //Solution II -> Pros: no double checking if a number is odd and short/clear
-            //            -> Cons: iterates through the entire list to select the odd numbers even if only the first 3 are required
-            result2 = list.Where(x => x % 2 != 0).Take(3);
+            result.ToList().ForEach(e => Console.WriteLine(e));
 
         }
     }
