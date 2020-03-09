@@ -28,3 +28,5 @@ namespace First_3_odd_numbers
         }
     }
 }
+
+// A bit too complicated. Find an easier solution. But good!
