@@ -1,5 +1,16 @@
 0. What are the 4 OOP principle?
     A: Inheritance, abstraction, encapsulation, composition.
+       Inheritance -> a class can be based on another class having access to the parent's field and methods (given the right access modifiers)
+       Abstraction -> I think it refers to extracting only what's essential in a given context (i.e. while solving a problem)
+       Encapsulation -> I don't really know a formal definition
+		     -> it's about how a certain behaviour is not fully disclosed to the recipient of the action. It doesn't matter how something
+			happens, it matters that it does. It's similar to a TV remote. We, as users of the remote, don't really know how the
+			remote works, we only know what it does. Encapsulation goes had in hand with access modifiers. You give to the caller
+			access to only what he's supposed to see, not more;
+       Composition -> combining classes (or other data types) into more complex ones. It shows the idea of encapsulation as the final class is composed
+		      of different classes which encapsulate behaviours.
+		   -> there's the small distinction between composition and aggregation. Aggregation refers to composing an object from other independant
+		      objects (which exist outside of the composition).
 
 1. What is a class? What are objects?
     I've never actually thought about looking this up even though I use objects and classes all the time.
