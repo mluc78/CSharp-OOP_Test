@@ -11,17 +11,25 @@
 		      of different classes which encapsulate behaviours.
 		   -> there's the small distinction between composition and aggregation. Aggregation refers to composing an object from other independant
 		      objects (which exist outside of the composition).
+		      
+Obs. Composition, while an important part of OOP ecosystem, it's not part of the of the 4 basic principles. Find the 4th and explain it here. If you can't, and I really doubt this, lets chat. Meanwhile, thank you for finding me yet another question. Check the newly added 33rd question.
+
+Obs. Excellent explanation of the encapsulation (hat's off)
 
 1. What is a class? What are objects?
     I've never actually thought about looking this up even though I use objects and classes all the time.
     
     A: I think classes are templates for creating objects, holding information about methods and properties . And I know that know that not all classes can be used for 
     creating objects (abstract and static classes). Objects are an instance of a class.
+    
+Nice!
 
 2. What is a contructor?
     A: A special kind of method called when creating a new instance of a class. On the same note, static constructors are called only once before the first initialization
     of an object / referencing a static member of the class (static constructor is called before the instance constructor). Also constructors don't have a return type, but
     can have any acces modifier and a class can have any number of constrcutors (overloaded versions);
+    
+Nice!
 
 3. What is constructor chaining?
     Hopefully I'm understanding the question correctly (I've never heard of chaining before, so it's all assumptions).
@@ -32,33 +40,46 @@
                 -> "this" keyword implies a constructor from within the class
                 -> "base" keyword implies a constructor from the superclass (current class inherits this one)
 
+Nice!
+
 4. Enumerate the most common access modifies in C# and explain their usage.
     A: private -> member is only accessible (can be called, assigned or read) from within the class
        protected -> member is only accessible from withing the class and classes that inherit it
        internal -> I'm not sure but I think the member is only accessible inside the assembly (the executable or the library)
        public -> member is accessible everywhere
+       
+Nice! You're not sure on internal. Please check and get back to me       
 
 5. What is the difference between readonly and const?
     A: const -> defines a static field that can't be reassigned
        readonly -> defines an instance field that can only be assigned in a constructor or as part of field variable initialization
        static readonly -> same as readonly but can only be assigned inside a static constructor (I wasn't sure about this one and out of curiosity I fiddled with it)
     Bonus: I know const and readonly field are evaluated at different times. I'm not sure but probably consts are evaluated at compile-time and readonlt at runtime
+    
+ - Why do you think a static readonly can only be assigned inside a static constructor? How else can you assign a value to a static readonly?
+- Why do you think readonly is evaluated at runtime? 
 
 6. Explain the static keyword. (both in the context of a class and in the context of a method)
     A: A static class is a class that can't be used to initialize objects (no instance constructor). Its members are accessible (depending on access modifiers) from
     a reference to the class. All members of a static class have to be static. 
        Static methods (and also fields) are members common across all instances of a class. For example, a static value type field has the same
     value for all the instances of the class. Static members of a non-static class can be accessed  from an object instance of the class or from a reference to the class.
+    
+Nice!
 
 7. What is the keyword virtual used for?
     A: It's used to signal that a method from a superclass is supposed to be overridden in the subclass, while also having a default implementation. Using the virtual 
     keyword makes the method behave polymorphically (the correct implementation is inferred). The new implementation in the subclass has the "override" keyword.
        A superclass' method can be overridden without the virtual keyword (the "new" keyword) but it won't behave polymorphically.
 
+Very nice!
+
 8. Explain the difference between overriding and overloading?
     A: Overloading refers to a method that shares the same signature (name and return type) with another one but requires different arguments. SO overload is a new imple-
     mentation of a method with a different set of arguments.
        Overriding refers to providing a new implementation for an already existing method, which hides the initial implementation.
+
+Nice! How can we access the default implementation?
 
 9.  A: ..\CodeSnippets\Polymorphism\program.cs
 
@@ -163,5 +184,7 @@
 	   p2.x = 5;
 	   -> the value of p1.x remains the unchanged as p2 is a copy of p1. They don't reference the same struct, they are independant. And this example is true for value types and immutable re-
 	      ference types (such as strings). If a field inside the struct is a reference to a mutable type, the structs are no longer fully independant.
+	     
+33. Explain OOP Composition vs Aggregation.
 	
 			   
