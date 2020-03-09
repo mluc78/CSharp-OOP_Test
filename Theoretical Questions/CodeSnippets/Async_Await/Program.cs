@@ -12,7 +12,7 @@ namespace Async_Await
             
             Console.WriteLine("Waiting for the function result...");
 
-            //Here the main thread gets blocked while waiting for the tas inside the functio to finish
+            //Here the main thread gets blocked while waiting for the task inside the function to finish
             int result = function.Result;
 
             Console.WriteLine($"The result of the long task is: {result}");
