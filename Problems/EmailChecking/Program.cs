@@ -23,3 +23,5 @@ namespace EmailChecking
         }
     }
 }
+
+// Are we forgetting to make a check on the right side of the email address?
